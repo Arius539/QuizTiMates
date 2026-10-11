@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.hsw.display.controller.MatchResultController">
+    <padding>
+        <Insets top="12" right="12" bottom="12" left="12"/>
+    </padding>
+    <top>
+        <Label text="Matchergebnis" style="-fx-font-size: 20px; -fx-font-weight: bold;">
+            <BorderPane.margin>
+                <Insets bottom="12"/>
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <StackPane>
+            <TabPane fx:id="resultTabs" tabClosingPolicy="UNAVAILABLE" minWidth="0" minHeight="0">
+                <tabs>
+                    <Tab text="Podest">
+                        <HBox fx:id="podium" spacing="10" alignment="BOTTOM_CENTER">
+                            <padding>
+                                <Insets top="12" right="8" bottom="16" left="8"/>
+                            </padding>
+                        </HBox>
+                    </Tab>
+                    <Tab text="Punkteverlauf">
+                        <StackPane>
+                            <LineChart fx:id="pointsChart" animated="false" minWidth="0" minHeight="0">
+                                <xAxis>
+                                    <CategoryAxis label="Runde"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Gesamtpunkte"/>
+                                </yAxis>
+                            </LineChart>
+                            <Label fx:id="noRoundsLabel" text="Keine Runden gespielt"
+                                   visible="false" managed="false"/>
+                        </StackPane>
+                    </Tab>
+                    <Tab text="Rangliste">
+                        <TableView fx:id="rankingTable">
+                            <columns>
+                                <TableColumn fx:id="rankColumn" text="Platz" prefWidth="45" sortable="false"/>
+                                <TableColumn fx:id="playerColumn" text="Spieler" prefWidth="125" sortable="false"/>
+                                <TableColumn fx:id="pointsColumn" text="Punkte" prefWidth="75" sortable="false"/>
+                                <TableColumn fx:id="timeColumn" text="Antwortzeit" prefWidth="110" sortable="false"/>
+                            </columns>
+                        </TableView>
+                    </Tab>
+                </tabs>
+            </TabPane>
+            <Label fx:id="emptyResultsLabel" text="Keine Teilnehmerdaten vorhanden"
+                   wrapText="true" visible="false" managed="false"/>
+        </StackPane>
+    </center>
+    <bottom>
+        <Button text="Zurück zur Lobby" onAction="#backToLobby">
+            <BorderPane.margin>
+                <Insets top="12"/>
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+</BorderPane>

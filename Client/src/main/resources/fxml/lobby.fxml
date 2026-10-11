@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.hsw.display.controller.LobbyController">
+    <ScrollPane fitToWidth="true" visible="${lobbyContent.visible}"
+                managed="${lobbyContent.managed}">
+        <content>
+            <VBox fx:id="lobbyContent" spacing="10" alignment="CENTER" fillWidth="false">
+                <Label text="Lobbycode: "/>
+                <Label fx:id="lobbyCode" text="Wird geladen …"/>
+                <Label text="Gastgeber: "/>
+                <Label fx:id="hostName" text="Wird geladen …"/>
+                <Label text="Spieler: " labelFor="$players"/>
+                <ListView fx:id="players" prefWidth="300" prefHeight="150"/>
+                <ProgressIndicator visible="false" managed="false"
+                                   prefWidth="30" prefHeight="30"/>
+                <Button text="Verlassen" onAction="#leaveLobby"/>
+                <VBox fx:id="hostSettings" spacing="8" prefWidth="300"
+                      visible="false" managed="false">
+                    <Label text="Spieleinstellungen"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Anzahl Fragen / Runden" labelFor="${roundCount}"/>
+                        <Spinner fx:id="roundCount" prefWidth="85"/>
+                    </HBox>
+                    <Label text="Themen – mindestens eines auswählen"/>
+                    <ScrollPane fitToWidth="true" prefViewportHeight="150">
+                        <content>
+                            <GridPane fx:id="topicGrid" hgap="15" vgap="8"/>
+                        </content>
+                    </ScrollPane>
+                    <Button fx:id="startMatchButton" text="Match starten" onAction="#startMatch"/>
+                </VBox>
+                <Button fx:id="showLastResultButton" text="Letztes Ergebnis anzeigen"
+                        onAction="#showLastResult" disable="true"/>
+            </VBox>
+        </content>
+    </ScrollPane>
+    <fx:include fx:id="matchResultView" source="matchResult.fxml"/>
+</StackPane>

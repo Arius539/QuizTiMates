@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.hsw.display.controller.HomeController"
+      spacing="12" alignment="CENTER" fillWidth="false">
+    <Label text="Angemeldet als"/>
+    <Label fx:id="playerName"/>
+    <Button text="Lobby erstellen" onAction="#createLobby"/>
+    <Label text="Lobbycode" labelFor="$lobbyCodeInput"/>
+    <TextField fx:id="lobbyCodeInput" promptText="Lobbycode" onAction="#joinLobby" prefWidth="250"/>
+    <Button text="Beitreten" onAction="#joinLobby"/>
+    <Button text="Zurück zur Anmeldung" onAction="#toPlayerSetup"/>
+</VBox>

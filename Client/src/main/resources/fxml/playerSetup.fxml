@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.hsw.display.controller.PlayerSetupController"
+      spacing="12" alignment="CENTER" fillWidth="false">
+    <Label text="Spielername" labelFor="$usernameInput"/>
+    <TextField fx:id="usernameInput" promptText="Spielername" prefWidth="250" onAction="#submit"/>
+    <Label text="Serveradresse" labelFor="$serverAddressInput"/>
+    <TextField fx:id="serverAddressInput" promptText="Serveradresse" prefWidth="250" onAction="#submit"/>
+    <Label text="Port" labelFor="$serverPortInput"/>
+    <TextField fx:id="serverPortInput" promptText="Port" prefWidth="250" onAction="#submit"/>
+    <Button text="Anmelden" onAction="#submit"/>
+</VBox>
